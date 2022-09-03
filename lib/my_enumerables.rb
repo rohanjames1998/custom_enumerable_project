@@ -2,6 +2,7 @@ module Enumerable
   # Your code goes here
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
+    # i serves as our index
     i = 0
    self.my_each do |ele|
     yield ele, i
@@ -18,6 +19,12 @@ module Enumerable
     end
     return selected_ele
   end
+
+  def my_all?
+    return to_enum(:my_all?) unless block_given?
+  end
+
+
 
 end
 
