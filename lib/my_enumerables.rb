@@ -1,5 +1,12 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index
+    return to_enum(:my_each_with_index) unless block_given?
+    self.my_each do |ele|
+      yield ele
+      yield self.index(ele)
+    end
+  end
 
 end
 
@@ -10,7 +17,7 @@ end
 class Array
   # Define my_each here
   def my_each
-    return to_enum(:my_each,) unless block_given?
+    return to_enum(:my_each) unless block_given?
      for i in self
       yield i
      end
