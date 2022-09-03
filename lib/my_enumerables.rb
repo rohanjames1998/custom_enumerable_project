@@ -10,7 +10,9 @@ end
 class Array
   # Define my_each here
   def my_each
-    return to_enum(:my_each, arr) unless block_given?
-     yield
+    return to_enum(:my_each,) unless block_given?
+     for i in self
+      yield i
+     end
     end
 end
