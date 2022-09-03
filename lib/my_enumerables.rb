@@ -21,7 +21,22 @@ module Enumerable
   end
 
   def my_all?
-    return to_enum(:my_all?) unless block_given?
+    output = 0
+    if block_given?
+      self.my_each do |ele|
+        output += 1 if yield ele
+      end
+    else
+      self.my_each do |ele|
+        output += 1 if ele == true
+      end
+    end
+
+    if output == self.length
+      return true
+    else
+      return false
+    end
   end
 
 
