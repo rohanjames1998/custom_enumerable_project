@@ -2,10 +2,12 @@ module Enumerable
   # Your code goes here
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
-    self.my_each do |ele|
-      yield ele
-      yield self.index(ele)
-    end
+    i = 0
+   self.my_each do |ele|
+    yield ele, i
+    i += 1
+   end
+   return self
   end
 
 end
