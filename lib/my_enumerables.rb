@@ -10,6 +10,15 @@ module Enumerable
    return self
   end
 
+  def my_select
+    return to_enum(:my_select) unless block_given?
+    selected_ele = []
+    self.my_each do |ele|
+      selected_ele << ele if yield ele
+    end
+    return selected_ele
+  end
+
 end
 
 # You will first have to define my_each
