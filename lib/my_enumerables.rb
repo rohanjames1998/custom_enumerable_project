@@ -1,5 +1,6 @@
 module Enumerable
   # Your code goes here
+
 end
 
 # You will first have to define my_each
@@ -8,4 +9,8 @@ end
 # to this method
 class Array
   # Define my_each here
+  def my_each
+    return to_enum(:my_each, arr) unless block_given?
+     yield
+    end
 end
