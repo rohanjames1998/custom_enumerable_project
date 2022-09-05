@@ -58,8 +58,24 @@ module Enumerable
     return true
   end
 
-  # def my_any?
-  # end
+  def my_any?
+    # If we have a block and any element returns truthy, we return true
+    if block_given?
+      self.my_each do |ele|
+        if yield ele
+          return true
+        end
+      end
+      # If not block is given we check if any element is truthy and return true if any is.
+    else
+      self.my_each do |ele|
+        if ele == true
+          return true
+        end
+      end
+    end
+    return false
+  end
 
 
 
