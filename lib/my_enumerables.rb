@@ -105,6 +105,16 @@ module Enumerable
     return output
   end
 
+  def my_inject(initial_operand=self.first)
+    if block_given?
+      self.my_each do |ele|
+       initial_operand = yield initial_operand, ele
+      end
+    end
+     initial_operand
+  end
+
+
 
 
 
