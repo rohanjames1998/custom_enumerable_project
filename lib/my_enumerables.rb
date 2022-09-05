@@ -78,12 +78,14 @@ module Enumerable
   end
 
   def my_none?
+    # If block is given we check if any element returns truthy. If it does we return false
     if block_given?
       self.my_each do |ele|
         if yield ele
           return false
         end
       end
+      # When no block is given we check if any element returns truthy. If it does we return false
     else
       self.my_each do |ele|
        if ele
@@ -91,10 +93,25 @@ module Enumerable
        end
       end
     end
+    #  Else we return true
     return true
   end
 
   def my_count
+    count = 0
+
+    if block_given?
+      # If block is given we check if any element returns truthy. If it does we increment count by 1
+      self.my_each do |ele|
+        if yield ele
+          count += 1
+        end
+      end
+      return count
+      # If no block is given we return number of elements.
+    else
+     return self.length
+    end
   end
 
 
