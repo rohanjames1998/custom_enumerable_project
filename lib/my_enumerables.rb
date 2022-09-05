@@ -78,8 +78,22 @@ module Enumerable
   end
 
   def my_none?
+    if block_given?
+      self.my_each do |ele|
+        if yield ele
+          return false
+        end
+      end
+    else
+      self.my_each do |ele|
+       if ele
+        return false
+       end
+      end
+    end
+    return true
   end
-  
+
 
 
 
