@@ -95,6 +95,14 @@ module Enumerable
   end
 
   def my_map
+    return to_enum(:my_map) unless block_given?
+    #  If block is given we first process ele (by block given by user) then push that into output array.
+    output = []
+    self.my_each do |ele|
+       processed_ele = yield ele
+       output << processed_ele
+    end
+    return output
   end
 
 
