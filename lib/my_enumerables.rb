@@ -94,6 +94,9 @@ module Enumerable
     return true
   end
 
+  def my_count
+  end
+
 
 
 
