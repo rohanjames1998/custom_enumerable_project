@@ -20,24 +20,46 @@ module Enumerable
     return selected_ele
   end
 
+  # def my_all?
+  #   # output = 0
+  #   # if block_given?
+  #   #   self.my_each do |ele|
+  #   #     output += 1 if yield ele
+  #   #   end
+  #   # else
+  #   #   # If no block given we check if all elements are truthy
+  #   #   self.my_each do |ele|
+  #   #     output += 1 if ele == true
+  #   #   end
+  #   # end
+
+  #   # if output == self.length
+  #   #   return true
+  #   # else
+  #   #   return false
+  #   # end
+  # end
+
   def my_all?
-    output = 0
     if block_given?
       self.my_each do |ele|
-        output += 1 if yield ele
+        #If at any element we encounter a false output we just return false.
+        if !yield ele
+          return false
+        end
       end
     else
       self.my_each do |ele|
-        output += 1 if ele == true
+        if ele == false
+          return false
+        end
       end
     end
-
-    if output == self.length
-      return true
-    else
-      return false
-    end
+    return true
   end
+
+  # def my_any?
+  # end
 
 
 
