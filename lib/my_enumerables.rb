@@ -77,6 +77,10 @@ module Enumerable
     return false
   end
 
+  def my_none?
+  end
+  
+
 
 
 end
