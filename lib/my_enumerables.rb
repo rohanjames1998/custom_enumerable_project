@@ -114,6 +114,9 @@ module Enumerable
     end
   end
 
+  def my_map
+  end
+
 
 
 
